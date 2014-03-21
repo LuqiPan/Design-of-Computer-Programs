@@ -5,6 +5,23 @@ def poker(hands):
 def hand_rank(hand):
     return None
 
+def card_ranks(hand):
+    "Return a list of the ranks, sorted with higher first."
+    ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
+    ranks.sort(reverse=True)
+    return ranks
+
+def straight(ranks):
+    "Return True if the ordered ranks form a 5-card straight."
+    # Your code here.
+    return (max(ranks) - min(ranks) == 4) & (len(set(ranks)) == 5)
+
+def flush(hand):
+    "Return True if all the cards have the same suit."
+    # Your code here.
+    suits = [s for r,s in hand]
+    return len(set(suits)) == 1
+
 def test():
     "Test cases for the functions in poker program"
     sf = "6C 7C 8C 9C TC".split() # => ['6C', '7C', '8C', '9C', 'TC']
