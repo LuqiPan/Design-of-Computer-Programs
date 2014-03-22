@@ -1,6 +1,10 @@
 def poker(hands):
     "Return the best hand: poker([hand,...]) => hand"
-    return max(hands, key=hand_rank)
+    return allmax(hands, key=hand_rank)
+
+def allmax(iterable, key=None):
+    maxItem = max(iterable, key)
+    return [i for i in iterable: i == maxItem]
 
 def hand_rank(hand):
     return None
@@ -10,6 +14,15 @@ def card_ranks(hand):
     ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
     ranks.sort(reverse=True)
     return ranks
+
+def kind(n, ranks):
+    """Return the first rank that this hand has exactly n of.
+        Return None if there is no n-of-a-kind in the hand."""
+    # Your code here.
+    for r in ranks:
+        if ranks.count(r) == n:
+            return r
+    return None
 
 def straight(ranks):
     "Return True if the ordered ranks form a 5-card straight."
