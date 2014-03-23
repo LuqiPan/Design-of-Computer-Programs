@@ -20,13 +20,7 @@ import itertools
 
 def best_hand(hand):
     "From a 7-card hand, return the best 5 card hand."
-    bestrank = (0,[0,0,0,0,0])
-    besthand = [0,0,0,0,0]
-    for possib in itertools.combinations(hand, 5):
-        if hand_rank(possib) > bestrank:
-            bestrank = hand_rank(possib)
-            besthand = possib
-    return besthand
+    return max(itertools.combinations(hand, 5), key=hand_rank)
     # Your code here
     
 # ------------------
